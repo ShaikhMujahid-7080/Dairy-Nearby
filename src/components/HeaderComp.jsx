@@ -1,6 +1,7 @@
 import { Navbar, Typography, Input, IconButton, Collapse } from '@material-tailwind/react';
 import { Search, Xmark, Menu } from 'iconoir-react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import SubHeaderComp from './SubHeaderComp'
 
 const LINKS = [
     {
@@ -66,6 +67,7 @@ const HeaderComp = () => {
     }, [])
 
     return (
+        <>
         <Navbar className='mx-auto w-full max-w-screen-xl h-max'>
             <div className='flex items-center'>
                 <Typography
@@ -101,6 +103,8 @@ const HeaderComp = () => {
                 <NavList />
             </Collapse>
         </Navbar>
+        <SubHeaderComp />
+        </>
     )
 }
 

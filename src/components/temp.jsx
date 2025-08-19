@@ -1,112 +1,45 @@
-import * as React from "react";
-import {
-  IconButton,
-  Typography,
-  Collapse,
-  Navbar,
-  Input,
-} from "@material-tailwind/react";
-import {
-  Archive,
-  Menu,
-  MultiplePages,
-  ProfileCircle,
-  Search,
-  SelectFace3d,
-  Xmark,
-} from "iconoir-react";
+import { Typography } from "@material-tailwind/react";
+
+const YEAR = new Date().getFullYear();
 
 const LINKS = [
   {
-    icon: MultiplePages,
-    title: "Pages",
+    title: "About Us",
     href: "#",
   },
   {
-    icon: ProfileCircle,
-    title: "Account",
+    title: "License",
     href: "#",
   },
   {
-    icon: SelectFace3d,
-    title: "Blocks",
+    title: "Contribute",
     href: "#",
   },
   {
-    icon: Archive,
-    title: "Docs",
+    title: "Contact Us",
     href: "#",
   },
 ];
 
-function NavList() {
+export default function FooterWithLogo() {
   return (
-    <ul className="mt-4 flex flex-col gap-x-3 gap-y-1.5 lg:mt-0 lg:flex-row lg:items-center">
-      {LINKS.map(({ icon: Icon, title, href }) => (
-        <li key={title}>
-          <Typography
-            as="a"
-            href={href}
-            type="small"
-            className="flex items-center gap-x-2 p-1 hover:text-primary"
-          >
-            <Icon className="h-4 w-4" />
-            {title}
-          </Typography>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-export default function HeaderComp() {
-  const [openNav, setOpenNav] = React.useState(false);
-
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
-    );
-  }, []);
-
-  return (
-    <Navbar className="mx-auto w-full max-w-screen-xl">
-      <div className="flex items-center">
-        <Typography
-          as="a"
-          href="#"
-          type="small"
-          className="ml-2 mr-2 block py-1 font-semibold"
-        >
-          Material Tailwind
-        </Typography>
-        <hr className="ml-1 mr-1.5 hidden h-5 w-px border-l border-t-0 border-secondary-dark lg:block" />
-        <div className="hidden lg:block">
-          <NavList />
-        </div>
-        <div className="ml-auto w-40">
-          <Input size="sm" type="search" placeholder="Search here...">
-            <Input.Icon>
-              <Search className="h-full w-full" />
-            </Input.Icon>
-          </Input>
-        </div>
-        <IconButton
-          size="sm"
-          variant="ghost"
-          onClick={() => setOpenNav(!openNav)}
-          className="ml-1 grid lg:hidden"
-        >
-          {openNav ? (
-            <Xmark className="h-4 w-4" />
-          ) : (
-            <Menu className="h-4 w-4" />
-          )}
-        </IconButton>
+    <footer className="w-full">
+      <div className="flex w-full flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 text-center md:justify-between">
+        <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/ct-assets/logo.png" alt="brand" className="w-8" />
+        <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {LINKS.map(({ title, href }, key) => (
+            <li key={key}>
+              <Typography as="a" href={href} className="hover:text-primary">
+                {title}
+              </Typography>
+            </li>
+          ))}
+        </ul>
       </div>
-      <Collapse open={openNav}>
-        <NavList />
-      </Collapse>
-    </Navbar>
+      <hr className="my-4 border-surface" />
+      <Typography className="text-center">
+        &copy; {YEAR} Material Tailwind
+      </Typography>
+    </footer>
   );
 }
