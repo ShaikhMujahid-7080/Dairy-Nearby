@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Dairy-Nearby/',  // 👈 Add this line — must match your repo name exactly
+  base: process.env.NODE_ENV === 'production' ? '/Dairy-Nearby/' : '/',
+  build: {
+    outDir: 'dist',
+  }
 })
