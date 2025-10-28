@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: "Poppins", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+	--color-brand: #0ea5e9;
+	--color-brand-600: #0284c7;
+	--color-brand-300: #7dd3fc;
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(6px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+}
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/container-queries";
+
+html, body, #root {
+	height: 100%;
+}
+
+/* Ensure consistent side padding on all containers */
+.container {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+body {
+	@apply antialiased text-gray-900 bg-white dark:bg-gray-950 dark:text-gray-100 font-sans;
+}
