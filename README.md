@@ -26,7 +26,7 @@ Dairy Nearby is a modern, responsive e‑commerce web app for a small startup th
 - Cart page with quantity updates
 
 ## 🚀 Live Demo
-- ![GitHub Pages](https://shaikhmujahid-7080.github.io/Dairy-Nearby)
+- GitHub Pages: [Dairy Nearby Live](https://shaikhmujahid-7080.github.io/Dairy-Nearby/)
 
 ## 📦 Getting Started
 
@@ -133,6 +133,19 @@ Example from `src/index.css`:
 - Add items from cards or product detail
 - Update quantities and remove items in the cart
 - Subtotal auto‑updates; checkout button placeholder for future integration
+
+## 🌐 Deploying to GitHub Pages (SPA)
+This project is configured for GitHub Pages under the repository name path. Ensure:
+- `vite.config.js` sets `base: '/Dairy-Nearby/'` in production
+- `BrowserRouter` uses `basename='/Dairy-Nearby'` in production
+- Add `public/404.html` that redirects unknown paths back to the SPA
+
+Deploy steps:
+```bash
+npm run build
+npm run deploy
+# then open https://shaikhmujahid-7080.github.io/Dairy-Nearby/
+```
 
 ## ♿ Accessibility
 - Semantic HTML and focusable interactive elements

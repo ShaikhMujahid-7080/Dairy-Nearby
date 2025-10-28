@@ -5,9 +5,11 @@ import { CartProvider } from './context/CartContext'
 import './index.css'
 import App from './App.jsx'
 
+const basename = import.meta.env.PROD ? '/Dairy-Nearby' : '/'
+
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
-		<BrowserRouter>
+		<BrowserRouter basename={basename}>
 			<CartProvider>
 				<App />
 			</CartProvider>
