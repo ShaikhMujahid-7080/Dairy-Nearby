@@ -28,3 +28,25 @@ html, body, #root {
 body {
 	@apply antialiased text-gray-900 bg-white dark:bg-gray-950 dark:text-gray-100 font-sans;
 }
+
+/* Enhanced button and interactive element styling */
+button, 
+a[role="button"],
+input[type="submit"],
+input[type="button"] {
+	@apply cursor-pointer;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea, select {
+	@apply transition-colors duration-200;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	@apply outline-none ring-2 ring-offset-2;
+}

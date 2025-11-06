@@ -10,6 +10,7 @@ import FAQ from './pages/FAQ'
 import Delivery from './pages/Delivery'
 import Sustainability from './pages/Sustainability'
 import Careers from './pages/Careers'
+import TrackOrder from './pages/TrackOrder'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 				<Route path="/sustainability" element={<Sustainability />} />
 				<Route path="/faq" element={<FAQ />} />
 				<Route path="/careers" element={<Careers />} />
+				<Route path="/track-order" element={<TrackOrder />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</RootLayout>
