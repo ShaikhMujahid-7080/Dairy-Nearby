@@ -10,18 +10,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Dairy Nearby</title>
     <script>
-      // Prevent flash of wrong theme
+      // Prevent flash of wrong theme by respecting saved preference first, then system settings.
       (function() {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const shouldUseDark = stored ? stored === 'dark' : prefersDark;
+          const root = document.documentElement;
+          root.classList.toggle('dark', shouldUseDark);
+          root.dataset.mode = shouldUseDark ? 'dark' : 'light';
+          root.style.colorScheme = shouldUseDark ? 'dark' : 'light';
+        } catch (error) {
+          // If accessing storage fails, fall back to light theme to keep rendering predictable.
+          const root = document.documentElement;
+          root.classList.remove('dark');
+          root.dataset.mode = 'light';
+          root.style.colorScheme = 'light';
         }
       })();
     </script>
-    <script type="module" crossorigin src="/Dairy-Nearby/assets/index-Bu_5IAiP.js"></script>
-    <link rel="stylesheet" crossorigin href="/Dairy-Nearby/assets/index-CVBAIgvE.css">
+    <script type="module" crossorigin src="/Dairy-Nearby/assets/index-D4VDZEsu.js"></script>
+    <link rel="stylesheet" crossorigin href="/Dairy-Nearby/assets/index-M4ag8ohw.css">
   </head>
   <body>
     <div id="root"></div>
