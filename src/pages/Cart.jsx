@@ -1,10 +1,23 @@
-import { ShoppingCart, Trash2, Plus, Minus, ArrowRight } from 'lucide-react'
+import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, Tag } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/currency'
+import { useMemo, useState } from 'react'
 
 export default function Cart() {
-	const { items, total, updateQuantity, removeItem, clearCart } = useCart()
+    const { items, total, updateQuantity, removeItem, clearCart } = useCart()
+    const [coupon, setCoupon] = useState('')
+    const discount = useMemo(() => {
+        // Simple mock coupons
+        const code = coupon.trim().toUpperCase()
+        if (!code) return 0
+        if (code === 'FRESH10') return Math.min(total * 0.10, 200)
+        if (code === 'DAIRY20' && total > 1500) return Math.min(total * 0.20, 400)
+        return 0
+    }, [coupon, total])
+    const delivery = total >= 2000 ? 0 : 50
+    const tax = Math.round((total - discount) * 0.05)
+    const grandTotal = Math.max(0, total - discount) + delivery + tax
 	
 	return (
 		<div className="relative">
@@ -100,28 +113,45 @@ export default function Cart() {
 						<div className="lg:sticky lg:top-24 h-fit">
 							<div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 shadow-lg">
 								<h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Order Summary</h2>
-								<div className="space-y-4 mb-6">
+                                <div className="space-y-4 mb-6">
 									<div className="flex justify-between text-gray-600 dark:text-gray-400">
 										<span>Subtotal ({items.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
 										<span className="font-medium">{formatPrice(total)}</span>
 									</div>
+                                    <div className="flex items-center gap-2">
+                                        <Tag className="size-4 text-gray-400" />
+                                        <input
+                                            value={coupon}
+                                            onChange={e => setCoupon(e.target.value)}
+                                            placeholder="Have a coupon? Try FRESH10 or DAIRY20"
+                                            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand focus:border-brand dark:focus:ring-brand-300 dark:focus:border-brand-300"
+                                        />
+                                        {discount > 0 && (
+                                            <span className="text-sm text-green-600 dark:text-green-400 font-medium">- {formatPrice(discount)}</span>
+                                        )}
+                                    </div>
 									<div className="flex justify-between text-gray-600 dark:text-gray-400">
 										<span>Delivery</span>
-										<span className="font-medium">{total >= 2000 ? 'Free' : formatPrice(50)}</span>
+                                        <span className="font-medium">{delivery === 0 ? 'Free' : formatPrice(delivery)}</span>
 									</div>
+                                    <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                                        <span>Tax (5%)</span>
+                                        <span className="font-medium">{formatPrice(tax)}</span>
+                                    </div>
 									<div className="border-t border-gray-200 dark:border-gray-800 pt-4">
 										<div className="flex justify-between text-lg font-bold text-gray-900 dark:text-gray-100">
 											<span>Total</span>
-											<span>{formatPrice(total + (total >= 2000 ? 0 : 50))}</span>
+                                            <span>{formatPrice(grandTotal)}</span>
 										</div>
 									</div>
 								</div>
-								<button 
-									className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand dark:bg-brand-300 text-white dark:text-gray-900 px-5 py-3 font-medium hover:bg-brand-600 dark:hover:bg-brand-200 active:scale-95 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-gray-900 mb-3"
-								>
-									Proceed to Checkout
-									<ArrowRight className="size-5" />
-								</button>
+                                <Link 
+                                    to="/checkout"
+                                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand dark:bg-brand-300 text-white dark:text-gray-900 px-5 py-3 font-medium hover:bg-brand-600 dark:hover:bg-brand-200 active:scale-95 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-gray-900 mb-3"
+                                >
+                                    Proceed to Checkout
+                                    <ArrowRight className="size-5" />
+                                </Link>
 								<button 
 									className="w-full text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-2 rounded-lg active:scale-95 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900" 
 									onClick={clearCart}

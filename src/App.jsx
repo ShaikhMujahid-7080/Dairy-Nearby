@@ -12,6 +12,7 @@ import Sustainability from './pages/Sustainability'
 import Careers from './pages/Careers'
 import TrackOrder from './pages/TrackOrder'
 import NotFound from './pages/NotFound'
+import Checkout from './pages/Checkout'
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 				<Route path="/faq" element={<FAQ />} />
 				<Route path="/careers" element={<Careers />} />
 				<Route path="/track-order" element={<TrackOrder />} />
+				<Route path="/checkout" element={<Checkout />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</RootLayout>

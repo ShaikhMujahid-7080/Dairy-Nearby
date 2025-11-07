@@ -66,47 +66,47 @@ export default function Contact() {
 					{/* Contact Information */}
 					<div>
 						<h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Get in touch</h2>
-						<div className="space-y-6">
-							<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
-								<div className="flex items-start gap-4">
-									<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
-										<Mail className="size-6 text-brand" />
-									</div>
-									<div>
-										<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h3>
-										<a href="mailto:hello@dairynearby.com" className="text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
-											hello@dairynearby.com
-										</a>
-									</div>
+					<div className="space-y-6">
+						<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
+							<div className="flex items-start gap-4">
+								<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
+									<Mail className="size-6 text-brand" />
+								</div>
+								<div>
+									<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h3>
+									<a href="mailto:maazshaikh2953@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
+										maazshaikh2953@gmail.com
+									</a>
 								</div>
 							</div>
-							<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
-								<div className="flex items-start gap-4">
-									<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
-										<Phone className="size-6 text-brand" />
-									</div>
-									<div>
-										<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Phone</h3>
-										<a href="tel:+1234567890" className="text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
-											+1 (234) 567-890
-										</a>
-									</div>
+						</div>
+						<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
+							<div className="flex items-start gap-4">
+								<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
+									<Phone className="size-6 text-brand" />
+								</div>
+								<div>
+									<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Phone</h3>
+									<a href="tel:+919376964118" className="text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
+										+91 93769 64118
+									</a>
 								</div>
 							</div>
-							<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
-								<div className="flex items-start gap-4">
-									<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
-										<MapPin className="size-6 text-brand" />
-									</div>
-									<div>
-										<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Address</h3>
-										<p className="text-gray-600 dark:text-gray-400">
-											123 Farm Road, Dairy Valley<br />
-											CA 90210, India
-										</p>
-									</div>
+						</div>
+						<div className="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 transition-all">
+							<div className="flex items-start gap-4">
+								<div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand/10 dark:bg-brand/20">
+									<MapPin className="size-6 text-brand" />
+								</div>
+								<div>
+									<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Address</h3>
+									<p className="text-gray-600 dark:text-gray-400">
+										Chh. Sambhajinagar-431003<br />
+										Maharashtra, India
+									</p>
 								</div>
 							</div>
+						</div>
 						</div>
 						<div className="mt-8 p-6 rounded-xl bg-gradient-to-br from-brand/5 to-brand-300/10 dark:from-brand/10 dark:to-brand-300/20 border border-brand/20 dark:border-brand/30">
 							<h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Business Hours</h3>

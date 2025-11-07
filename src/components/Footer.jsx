@@ -4,9 +4,9 @@ import dairynearbyIcon from '../assets/dairynearbyIcon-nobg.png'
 
 export default function Footer() {
 	return (
-		<footer className="relative mt-20 border-t border-gray-200 dark:border-gray-800 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+		<footer className="relative mt-20 border-t border-gray-200 dark:border-gray-800 bg-linear-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
 			{/* Decorative top border */}
-			<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand via-brand-300 to-brand"></div>
+			<div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-brand via-brand-300 to-brand"></div>
 			
 			<div className="container py-12">
 				{/* Main footer content */}
@@ -14,7 +14,7 @@ export default function Footer() {
 					{/* Brand section */}
 					<div className="lg:col-span-1">
 						<Link to="/" className="inline-flex items-center gap-2 mb-4 group">
-							<div className="p-2 rounded-xl bg-gradient-to-br from-brand/10 to-brand-300/20 dark:from-brand/20 dark:to-brand-300/30 group-hover:from-brand/20 group-hover:to-brand-300/30 dark:group-hover:from-brand/30 dark:group-hover:to-brand-300/40 transition-all duration-300">
+							<div className="p-2 rounded-xl bg-linear-to-br from-brand/10 to-brand-300/20 dark:from-brand/20 dark:to-brand-300/30 group-hover:from-brand/20 group-hover:to-brand-300/30 dark:group-hover:from-brand/30 dark:group-hover:to-brand-300/40 transition-all duration-300">
 								<img 
 									src={dairynearbyIcon} 
 									alt="Dairy Nearby Logo" 
@@ -30,8 +30,8 @@ export default function Footer() {
 						</p>
 						
 						{/* Social media links */}
-						<div className="flex items-center gap-3">
-							<a 
+					<div className="flex items-center gap-3">
+						<a 
 								href="https://facebook.com" 
 								target="_blank" 
 								rel="noopener noreferrer"
@@ -58,14 +58,14 @@ export default function Footer() {
 							>
 								<Instagram className="size-5" />
 							</a>
-							<a 
-								href="mailto:hello@dairynearby.com"
-								className="p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 hover:border-brand dark:hover:border-brand-300 hover:bg-brand/5 dark:hover:bg-brand/10 transition-all duration-200 cursor-pointer"
-								aria-label="Email"
-							>
-								<Mail className="size-5" />
-							</a>
-						</div>
+						<a 
+							href="mailto:maazshaikh2953@gmail.com"
+							className="p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-300 hover:border-brand dark:hover:border-brand-300 hover:bg-brand/5 dark:hover:bg-brand/10 transition-all duration-200 cursor-pointer"
+							aria-label="Email"
+						>
+							<Mail className="size-5" />
+						</a>
+					</div>
 					</div>
 
 					{/* Quick Links */}
@@ -152,19 +152,19 @@ export default function Footer() {
 							</button>
 						</form>
 						
-						{/* Contact Info */}
-						<div className="mt-6 space-y-2 pt-6 border-t border-gray-200 dark:border-gray-800">
-							<div className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-								<MapPin className="size-4 mt-0.5 text-brand flex-shrink-0" />
-								<span>123 Farm Road, Dairy Valley, CA 90210</span>
-							</div>
-							<div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-								<Phone className="size-4 text-brand flex-shrink-0" />
-								<a href="tel:+1234567890" className="hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
-									+1 (234) 567-890
-								</a>
-							</div>
+					{/* Contact Info */}
+					<div className="mt-6 space-y-2 pt-6 border-t border-gray-200 dark:border-gray-800">
+						<div className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+							<MapPin className="size-4 mt-0.5 text-brand shrink-0" />
+							<span>Chh. Sambhajinagar-431003, Maharashtra, India</span>
 						</div>
+						<div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+							<Phone className="size-4 text-brand shrink-0" />
+							<a href="tel:+919376964118" className="hover:text-brand dark:hover:text-brand-300 transition-colors cursor-pointer">
+								+91 93769 64118
+							</a>
+						</div>
+					</div>
 					</div>
 				</div>
 

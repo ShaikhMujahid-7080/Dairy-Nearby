@@ -1,8 +1,38 @@
-import { Milk } from 'lucide-react'
+import { Milk, Filter, Search, ArrowUpDown, X } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
+import { useMemo, useState } from 'react'
+
+const categories = ['All', 'Milk', 'Yogurt', 'Cheese', 'Butter']
 
 export default function Products() {
+	const [activeCategory, setActiveCategory] = useState('All')
+	const [query, setQuery] = useState('')
+	const [maxPrice, setMaxPrice] = useState(1000)
+	const [sort, setSort] = useState('relevance')
+
+	const filtered = useMemo(() => {
+		let list = [...products]
+		if (activeCategory !== 'All') {
+			list = list.filter(p => p.category === activeCategory)
+		}
+		if (query.trim()) {
+			const q = query.toLowerCase()
+			list = list.filter(p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q))
+		}
+		list = list.filter(p => p.price <= maxPrice)
+		switch (sort) {
+			case 'price-asc':
+				list.sort((a, b) => a.price - b.price); break
+			case 'price-desc':
+				list.sort((a, b) => b.price - a.price); break
+			case 'name-asc':
+				list.sort((a, b) => a.name.localeCompare(b.name)); break
+			default:
+				break
+		}
+		return list
+	}, [activeCategory, query, maxPrice, sort])
 	return (
 		<div className="relative">
 			{/* Hero section */}
@@ -25,10 +55,55 @@ export default function Products() {
 				</div>
 			</section>
 
+			{/* Filters */}
+			<section className="container pt-10">
+				<div className="flex flex-wrap items-center gap-3">
+					{categories.map(cat => (
+						<button
+							key={cat}
+							onClick={() => setActiveCategory(cat)}
+							className={`px-4 py-2 rounded-full border text-sm font-medium transition-all cursor-pointer ${activeCategory === cat ? 'bg-brand text-white border-brand dark:bg-brand-300 dark:text-gray-900 dark:border-brand-300' : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-brand dark:hover:border-brand-300'}`}
+						>
+							{cat}
+						</button>
+					))}
+					<div className="ml-auto flex items-center gap-2">
+						<div className="relative">
+							<Search className="size-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+							<input
+								value={query}
+								onChange={e => setQuery(e.target.value)}
+								placeholder="Search products..."
+								className="pl-9 pr-8 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand focus:border-brand dark:focus:ring-brand-300 dark:focus:border-brand-300"
+							/>
+							{query && (
+								<button className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() => setQuery('')} aria-label="Clear search">
+									<X className="size-4" />
+								</button>
+							)}
+						</div>
+						<div className="flex items-center gap-2">
+							<Filter className="size-4 text-gray-400" />
+							<input type="range" min={50} max={1000} value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))} className="w-40" />
+							<span className="text-sm text-gray-600 dark:text-gray-400">Up to ₹{maxPrice}</span>
+						</div>
+						<div className="relative">
+							<select value={sort} onChange={e => setSort(e.target.value)} className="pl-8 pr-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand focus:border-brand dark:focus:ring-brand-300 dark:focus:border-brand-300">
+								<option value="relevance">Sort: Relevance</option>
+								<option value="price-asc">Price: Low to High</option>
+								<option value="price-desc">Price: High to Low</option>
+								<option value="name-asc">Name: A → Z</option>
+							</select>
+							<ArrowUpDown className="size-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400" />
+						</div>
+					</div>
+				</div>
+			</section>
+
 			{/* Products grid */}
 			<section className="container py-12">
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-					{products.map(p => (
+					{filtered.map(p => (
 						<ProductCard key={p.id} product={p} />
 					))}
 				</div>

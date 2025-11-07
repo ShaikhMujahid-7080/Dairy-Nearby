@@ -1,4 +1,4 @@
-import { Milk, QrCode, Recycle, Calendar, Heart, Shield, Leaf } from 'lucide-react'
+import { Milk, QrCode, Recycle, Calendar, Heart, Shield, Leaf, Users } from 'lucide-react'
 
 export default function About() {
 	const features = [
@@ -26,6 +26,45 @@ export default function About() {
 		{ icon: Heart, title: 'Trust', description: 'Building relationships with local farmers and customers' },
 		{ icon: Shield, title: 'Quality', description: 'Ensuring the highest standards in every product' },
 		{ icon: Leaf, title: 'Sustainability', description: 'Committed to eco-friendly practices and local sourcing' }
+	]
+
+	const team = [
+		{
+			name: 'Shaikh Maaz',
+			role: 'Founder & Product Strategist',
+			focus: 'Vision & Partnerships',
+			description: 'Cuts through customer feedback and market insights to keep Dairy Nearby grounded in real-world needs while building strong ties with partner farms and retailers.'
+		},
+		{
+			name: 'Anam Mohammad',
+			role: 'Brand & Experience Lead',
+			focus: 'Design Systems',
+			description: 'Shapes the tone of the brand across every touchpoint, crafting intuitive experiences that make trying sustainable dairy a delight for new and returning customers alike.'
+		},
+		{
+			name: 'Saad Shaikh',
+			role: 'Operations & Logistics Lead',
+			focus: 'Cold-Chain Efficiency',
+			description: 'Optimizes fulfillment timelines, helping field teams coordinate rapid pickups, quality checks, and doorstep deliveries within the 8-hour freshness window.'
+		},
+		{
+			name: 'Siddhant Deore',
+			role: 'Growth & Partnerships',
+			focus: 'Community Programs',
+			description: 'Builds win-win collaborations with local suppliers, housing communities, and cafés so that sustainably sourced dairy becomes part of their daily routines.'
+		},
+		{
+			name: 'Mohammad Takhi Sameer',
+			role: 'Quality & Compliance Specialist',
+			focus: 'Food Safety',
+			description: 'Leads the quality playbook, ensuring every batch meets FSSAI standards, traceability requirements, and our own stringent freshness benchmarks.'
+		},
+		{
+			name: 'Shaikh Mujahid',
+			role: 'Full-Stack Engineer & Experience Owner',
+			focus: 'Platform Reliability',
+			description: 'Designs and builds the digital experience end-to-end—from blazing fast storefronts to stable APIs—while piloting new features that keep the brand close to its customers.'
+		}
 	]
 
 	return (
@@ -109,6 +148,39 @@ export default function About() {
 							)
 						})}
 					</div>
+				</div>
+			</section>
+
+			{/* Team */}
+			<section className="container py-16">
+				<div className="text-center mb-12">
+					<div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand/10 dark:bg-brand/20 mb-4">
+						<Users className="size-7 text-brand" />
+					</div>
+					<h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+						Meet the Team
+					</h2>
+					<p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+						A multidisciplinary crew turns sustainable dairy into a dependable weekly habit—combining product thinking, design, engineering, and rigorous supply-chain know-how.
+					</p>
+				</div>
+				<div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+					{team.map(member => (
+						<div key={member.name} className="p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-brand dark:hover:border-brand-300 shadow-sm hover:shadow-lg transition-all duration-300">
+							<div className="flex items-start justify-between gap-4">
+								<div>
+									<h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{member.name}</h3>
+									<p className="text-sm uppercase tracking-wide text-brand dark:text-brand-300 font-medium mt-1">{member.role}</p>
+								</div>
+								<span className="inline-flex items-center text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full bg-brand/10 dark:bg-brand/20 text-brand dark:text-brand-300">
+									{member.focus}
+								</span>
+							</div>
+							<p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+								{member.description}
+							</p>
+						</div>
+					))}
 				</div>
 			</section>
 		</div>
